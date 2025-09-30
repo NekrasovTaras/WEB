@@ -2,81 +2,20 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Магазин</title>
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
     <header>
-        <div>
-            <h1>
-                <span>М</span>
-                <span>а</span>
-                <span>г</span>
-                <span>а</span>
-                <span>з</span>
-                <span>и</span>
-                <span>н </span>
-                <span>-</span>
-                <span> Ц</span>
-                <span>в</span>
-                <span>е</span>
-                <span>т</span>
-                <span>о</span>
-                <span>з</span>
-                <span>и</span>
-                <span>н</span>
-            </h1>
-
-            <nav aria-label="Главное меню">
-                <button>Корзина (<span>0</span>)</button>
-            </nav>
-        </div>
+        <h1>Магазин цветозин</h1>
+        <button id="cart-btn">Корзина (0)</button>
     </header>
 
     <main>
-        <section aria-label="Каталог товаров">
-            <h2 >Каталог товаров</h2>
-        </section>
+        <div id="products">
+        </div>
     </main>
 
-    <aside>
-        <header>
-            <h3>Корзина</h3>
-            <button>×</button>
-        </header>
-        <ul></ul>
-        <div>
-            <div>Итого: <strong>0.00 ₽</strong></div>
-            <button>Оформить заказ</button>
-        </div>
-    </aside>
-
-    <div>
-        <div>
-            <button>×</button>
-            <h3>Оформление заказа</h3>
-            <form novalidate>
-                <div>
-                    <label>Имя <input type="text" name="firstName" required></label>
-                </div>
-                <div>
-                    <label>Фамилия <input type="text" name="lastName" required></label>
-                </div>
-                <div>
-                    <label>Адрес доставки <input type="text" name="address" required></label>
-                </div>
-                <div>
-                    <label>Контактный номер <input type="text" name="phone" required></label>
-                </div>
-                <div>
-                    <button>Создать заказ</button>
-                </div>
-            </form>
-            <div></div>
-        </div>
-    </div>
-
-    <script defer src="scripts/app.js"></script>
+    <script src="scripts/app.js"></script>
 </body>
 </html>

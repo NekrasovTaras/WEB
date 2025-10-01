@@ -1,64 +1,86 @@
 :root {
-    --primary-color: #2b7cff;
-    --text-color: #333;
+    --gap: 16px;
+    --max-width: 1100px;
+    --card-bg: #fff;
+    --accent: #2b7cff;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
-    background: #f5f5f5;
-}
-
-.header {
-    background: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #f5f7fb;
+    font-family: Arial, sans-serif;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 2rem;
+    padding: 16px;
+}
+
+.site-header {
+    background: #fff;
+    border-bottom: 1px solid #e6e9ef;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: var(--gap);
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
 .product-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .product-card img {
     width: 100%;
-    height: 200px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
-.modal {
-    display: none;
+.cart-panel {
     position: fixed;
+    right: 0;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
+    height: 100vh;
+    width: 360px;
+    background: #fff;
+    box-shadow: -10px 0 24px rgba(0,0,0,0.08);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
 }
 
-.modal-content {
-    background: white;
-    margin: 10% auto;
-    padding: 2rem;
-    width: 90%;
-    max-width: 500px;
+.cart-panel.open {
+    transform: translateX(0);
+}
+
+.btn {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
     border-radius: 8px;
+}
+
+.btn.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: transparent;
 }

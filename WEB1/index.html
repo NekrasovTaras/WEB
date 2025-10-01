@@ -7,23 +7,32 @@
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-    <header class="header">
-        <h1>Магазин - Цветазин</h1>
-        <button id="cart-btn">Корзина (<span id="cart-count">0</span>)</button>
+    <header class="site-header">
+        <div class="container header-inner">
+            <h1 class="logo">Магазин - Цветазин</h1>
+            <nav>
+                <button id="open-cart" class="btn">Корзина (<span id="cart-count">0</span>)</button>
+            </nav>
+        </div>
     </header>
 
-    <main class="container">
-        <div id="products" class="products-grid"></div>
+    <main>
+        <section class="container">
+            <div id="products" class="products-grid"></div>
+        </section>
     </main>
 
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <h2>Корзина</h2>
-            <div id="cart-items"></div>
-            <div>Итого: <span id="cart-total">0</span> ₽</div>
-            <button onclick="closeCart()">Закрыть</button>
+    <aside id="cart-panel" class="cart-panel">
+        <header class="cart-header">
+            <h3>Корзина</h3>
+            <button id="close-cart">×</button>
+        </header>
+        <ul id="cart-items" class="cart-items"></ul>
+        <div class="cart-footer">
+            <div>Итого: <strong id="cart-total">0</strong> ₽</div>
+            <button id="checkout-btn" class="btn primary">Оформить заказ</button>
         </div>
-    </div>
+    </aside>
 
     <script src="scripts/app.js"></script>
 </body>

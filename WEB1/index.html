@@ -3,37 +3,82 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Магазин цветов</title>
+    <title>Магазин</title>
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <h1 class="logo">Магазин - Цветазин</h1>
-            <nav>
+            <h1 class="logo rainbow">
+                <span>М</span>
+                <span>а</span>
+                <span>г</span>
+                <span>а</span>
+                <span>з</span>
+                <span>и</span>
+                <span>н</span>
+                <span> - </span>
+                <span>Ц</span>
+                <span>в</span>
+                <span>е</span>
+                <span>т</span>
+                <span>а</span>
+                <span>з</span>
+                <span>и</span>
+                <span>н</span>
+            </h1>
+
+            <nav aria-label="Главное меню">
                 <button id="open-cart" class="btn">Корзина (<span id="cart-count">0</span>)</button>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="container">
-            <div id="products" class="products-grid"></div>
+        <section id="products-section" class="container" aria-label="Каталог товаров">
+            <h2 class="visually-hidden">Каталог товаров</h2>
+            <div id="products" class="products-grid">
+            </div>
         </section>
     </main>
 
-    <aside id="cart-panel" class="cart-panel">
+    <aside id="cart-panel" class="cart-panel" aria-hidden="true" role="complementary">
         <header class="cart-header">
             <h3>Корзина</h3>
-            <button id="close-cart">×</button>
+            <button id="close-cart" aria-label="Закрыть корзину">×</button>
         </header>
-        <ul id="cart-items" class="cart-items"></ul>
+        <ul id="cart-items" class="cart-items" aria-live="polite"></ul>
         <div class="cart-footer">
-            <div>Итого: <strong id="cart-total">0</strong> ₽</div>
-            <button id="checkout-btn" class="btn primary">Оформить заказ</button>
+            <div>Итого: <strong id="cart-total">0.00 ₽</strong></div>
+            <button id="checkout-btn" class="btn primary" type="button">Оформить заказ</button>
         </div>
     </aside>
 
-    <script src="scripts/app.js"></script>
+    <div id="checkout-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button id="close-modal" class="modal-close" aria-label="Закрыть">×</button>
+            <h3>Оформление заказа</h3>
+            <form id="checkout-form" novalidate>
+                <div class="form-row">
+                    <label>Имя <input type="text" name="firstName" required></label>
+                </div>
+                <div class="form-row">
+                    <label>Фамилия <input type="text" name="lastName" required></label>
+                </div>
+                <div class="form-row">
+                    <label>Адрес доставки <input type="text" name="address" required></label>
+                </div>
+                <div class="form-row">
+                    <label>Контактный номер <input type="tel" name="phone" required pattern="[\d\+\-\s\(\)]{6,}"></label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn primary">Создать заказ</button>
+                </div>
+            </form>
+            <div id="order-message" class="order-message" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <script defer src="scripts/app.js"></script>
 </body>
 </html>

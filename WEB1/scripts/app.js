@@ -1,8 +1,8 @@
 const products = [
-    { id: 'p1', title: 'Ромашки', price: 399.00, image: 'images/cveti1.jpg' },
-    { id: 'p2', title: 'Тюльпаны', price: 899.00, image: 'images/cveti2.jpg' },
-    { id: 'p3', title: 'Розы', price: 2499.00, image: 'images/cveti3.jpg' },
-    { id: 'p4', title: 'Цветочек - смехаточек', price: 228.00, image: 'images/cveti4.png' }
+    { id: 'p1', title: 'Ромашки', price: 399.00, image: 'WEB1/images/cveti1.jpg' },
+    { id: 'p2', title: 'Тюльпаны', price: 899.00, image: 'WEB1/images/cveti2.jpg' },
+    { id: 'p3', title: 'Розы', price: 2499.00, image: 'WEB1/images/cveti3.jpg' },
+    { id: 'p4', title: 'Цветочек - смехаточек', price: 228.00, image: 'WEB1/images/cveti4.png' }
 ];
 
 let cart = [];

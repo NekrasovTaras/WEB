@@ -78,7 +78,11 @@ function renderCart() {
           <div class="price-small">${formatPrice(item.price)}</div>
         </div>
         <div class="controls">
-          <input class="qty" type="number" min="1" value="${item.qty}" data-id="${item.id}" aria-label="Количество ${item.title}">
+          <div class="quantity-controls">
+            <button class="qty-btn minus" data-id="${item.id}" aria-label="Уменьшить количество ${item.title}">-</button>
+            <span class="quantity-display">${item.qty}</span>
+            <button class="qty-btn plus" data-id="${item.id}" aria-label="Увеличить количество ${item.title}">+</button>
+          </div>
           <button class="btn remove-btn" data-id="${item.id}" aria-label="Удалить ${item.title}">Удалить</button>
         </div>
       `;
@@ -109,17 +113,18 @@ function removeFromCart(productId) {
     renderCart();
 }
 
-function changeQty(productId, qty) {
+function changeQty(productId, newQty) {
     const item = cart.find(i => i.id === productId);
     if (!item) return;
-    const v = parseInt(qty, 10);
+    
+    const v = parseInt(newQty, 10);
     if (isNaN(v) || v < 1) {
         removeFromCart(productId);
     } else {
         item.qty = v;
+        saveCart();
+        renderCart();
     }
-    saveCart();
-    renderCart();
 }
 
 function openCart() {
@@ -153,17 +158,33 @@ function init() {
 
     el.openCartBtn.addEventListener('click', openCart);
     el.closeCartBtn.addEventListener('click', closeCart);
+
     el.cartItems.addEventListener('click', ev => {
+        ev.stopPropagation();
+        
         const removeBtn = ev.target.closest('.remove-btn');
         if (removeBtn) {
             const id = removeBtn.dataset.id;
             removeFromCart(id);
         }
-    });
-    el.cartItems.addEventListener('change', ev => {
-        if (ev.target.matches('.qty')) {
-            const id = ev.target.dataset.id;
-            changeQty(id, ev.target.value);
+        
+        const plusBtn = ev.target.closest('.qty-btn.plus');
+        const minusBtn = ev.target.closest('.qty-btn.minus');
+        
+        if (plusBtn) {
+            const id = plusBtn.dataset.id;
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                changeQty(id, item.qty + 1);
+            }
+        }
+        
+        if (minusBtn) {
+            const id = minusBtn.dataset.id;
+            const item = cart.find(i => i.id === id);
+            if (item && item.qty > 1) {
+                changeQty(id, item.qty - 1);
+            }
         }
     });
 
